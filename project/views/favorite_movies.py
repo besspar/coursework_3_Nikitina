@@ -29,4 +29,9 @@ class FavoriteMovieView(Resource):
     @favorite_movies_ns.response(200, "OK")
     @favorite_movies_ns.response(404, "Movie not found")
     def post(self, movie_id: int):
-        
+        user_id = auth_check().get('id')
+        return FavoriteMoviesService(db.session).create(movie_id=movie_id, user_id=user_id)
+
+    def delete(self, movie_id: int):
+        user_id = auth_check().get('id')
+        return FavoriteMoviesService(db.session).delete(movie_id=movie_id, user_id=user_id)

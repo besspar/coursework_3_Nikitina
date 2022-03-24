@@ -2,6 +2,7 @@ from project.dao.movie import MovieDAO
 from project.schemas.movie import MovieSchema
 from project.exceptions import ItemNotFound
 from project.services.base import BaseService
+from flask import current_app
 
 class MovieService(BaseService):
     def get_item_by_id(self, pk):
