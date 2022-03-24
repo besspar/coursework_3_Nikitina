@@ -9,5 +9,5 @@ __all__ = [
     "Director",
     "Movie",
     "User",
-    "FavoriteMovies"
+    "FavoriteMovie"
 ]

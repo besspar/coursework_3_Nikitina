@@ -1,5 +1,7 @@
 from project.dao.movie import MovieDAO
-import
+from project.schemas.movie import MovieSchema
+from project.exceptions import ItemNotFound
+from project.services.base import BaseService
 
 class MovieService(BaseService):
     def get_item_by_id(self, pk):
