@@ -15,7 +15,6 @@ class UsersView(Resource):
     @users_ns.expect(parser)
     @auth_required
     @users_ns.response(200, "OK")
-
     def get(self):
         """Get all"""
         page = parser.parse_args().get("page")
@@ -32,7 +31,7 @@ class UserView(Resource):
     def get(self, user_id: int):
         """Get one by id"""
         try:
-            return UsersService(db.session).get_item_by_id(user_id)
+            return UsersService(db.session).get_user_by_id(user_id)
         except ItemNotFound:
             abort(404, message="User not found")
 

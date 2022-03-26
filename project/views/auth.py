@@ -37,4 +37,4 @@ class AuthRegisterView(Resource):
         req_json = request.json
         if not req_json:
             abort(400, message="Bad Request")
-        return UserService(db.session).create(req_json)
+        return UsersService(db.session).create(req_json)
