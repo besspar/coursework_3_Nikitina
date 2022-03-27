@@ -42,7 +42,9 @@ class UsersService(BaseService):
     def update_pass(self, data_in):
         user_pass_1 = data_in.get("password_1")
         user_pass_2 = data_in.get("password_2")
+        data_in['password'] = generate_password_digest(user_pass_1)
         if user_pass_2 == user_pass_1:
+            data_in['password'] = generate_password_digest(user_pass_1)
             user = UserDAO(self._db_session).update(data_in)
         return UserSchema().dump(user)
 

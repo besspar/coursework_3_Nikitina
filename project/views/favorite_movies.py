@@ -10,7 +10,7 @@ parser.add_argument('page', type=int)
 parser.add_argument('status', type=str)
 
 
-@favorite_movies_ns.routet('/')
+@favorite_movies_ns.route('/')
 class FavoriteMoviesView(Resource):
     @auth_required
     @favorite_movies_ns.response(200, "OK")
@@ -23,7 +23,7 @@ class FavoriteMoviesView(Resource):
             abort(404, message="Movies not found")
 
 
-@favorite_movies_ns.route("/<int: movie_id>")
+@favorite_movies_ns.route("/<int:movie_id>")
 class FavoriteMovieView(Resource):
     @auth_required
     @favorite_movies_ns.response(200, "OK")

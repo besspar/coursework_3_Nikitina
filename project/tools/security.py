@@ -3,7 +3,7 @@ import hashlib
 import hmac
 
 import jwt
-from flask import current_app
+from flask import current_app, request
 from flask_restx import abort
 import calendar
 import datetime
@@ -18,7 +18,10 @@ def generate_password_digest(password):
     ))
 
 def auth_check():
-    pass
+    if "Authorization" not in request.headers:
+        return False
+    token = request.headers["Authorization"].split("Bearer ")[-1]
+    return jwt_decode(token)
 
 
 def jwt_decode(token):
