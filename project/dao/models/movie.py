@@ -10,9 +10,9 @@ class Movie(BaseMixin, db.Model):
     year = db.Column(db.Integer, nullable=False)
     rating = db.Column(db.Float, nullable=False)
     genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'), nullable=False)
-    genre = db.relationship("Genre")
+    genre = db.relationship("genres")
     director_id = db.Column(db.Integer, db.ForeignKey('genres.id'), nullable=False)
-    director = db.relationship("Director")
+    director = db.relationship("directors")
 
     def __repr__(self):
         return f"<Movie '{self.title.title()}'>"
